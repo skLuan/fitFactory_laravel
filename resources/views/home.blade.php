@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fit Factory Team | Crossfit box</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="bg-ffGreen-black flex h-screen">
-    <picture class="m-auto">
-        <img src="/logo_complete.svg" alt="logo">
-    </picture>
-</body>
-</html>
+<x-layouts.general>
+    <section class="w-full h-full flex flex-col">
+        <x-application-logo class="mx-auto mt-auto" ></x-application-logo>
+        <div class="mx-auto mt-10 mb-auto">
+            <a class="text-ffGreen-black bg-ffGreen font-square font-bold text-2xl px-5 py-2" href="{{route('murphy')}}">Murphy Day</a>
+        </div>
+    </section>
+</x-layouts.general>

@@ -12,6 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('exercises_routines', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('exercise_id')->constrained('exercises');
+            $table->foreignId('routine_id')->constrained('routines');
+            $table->timestamps();
+        });
     }
 
     /**

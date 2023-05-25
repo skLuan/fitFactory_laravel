@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('routines', function (Blueprint $table) {
+        Schema::create('user_times', function (Blueprint $table) {
             $table->id();
-            $table->integer('reps');
-            $table->time('time', $precision = 1);
             $table->timestamps();
+            $table->string('user_name', 50);
+            $table->time('time', $precision = 1);
+            $table->foreignId('wod_id')->constrained('Wods');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('user_times');
     }
 };

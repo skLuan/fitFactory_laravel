@@ -12,6 +12,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                square: ["Nova\\ Square"],
             },
             colors: {
                 ffGray: {
@@ -19,7 +20,7 @@ module.exports = {
                 },
                 ffGreen: {
                     DEFAULT: "#92F663",
-                    black: "#071301",
+                    black: "#070801",
                     white: "#E4FDD8",
                 },
                 ffRed: {
