@@ -21,6 +21,12 @@ class ExercisesSeeder extends Seeder
             'Over Head Snatch',
             'Burpee',
             'Snatch Balance',
+            'Pull ups',
+            'Push ups',
+            'Bastard',
+            'Power Squat',
+            'Sit up V',
+            'Hollow Rock',
         ];
 
         foreach ($linda as $key => $value) {

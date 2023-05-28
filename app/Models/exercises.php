@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Exercises extends Model
 {
     use HasFactory;
 
-    public function routines(): BelongsToMany
+    public function repetitions(): HasMany
     {
-        return $this->belongsToMany(Routines::class);
+        return $this->hasMany(Repetitions::class);
     }
 }

@@ -10,8 +10,8 @@ class Routines extends Model
 {
     use HasFactory;
 
-    public function exercises(): BelongsToMany
+    public function repetitions(): BelongsToMany
     {
-        return $this->belongsToMany(Exercises::class);
+        return $this->belongsToMany(Repetitions::class);
     }
 }

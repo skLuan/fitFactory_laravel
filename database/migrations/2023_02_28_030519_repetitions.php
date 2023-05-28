@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_times', function (Blueprint $table) {
+        //
+        Schema::create('repetitions', function (Blueprint $table) {
             $table->id();
+            $table->integer('reps');
+            $table->foreignId('execise_id')->constrained('exercises');
+            // $table->time('time', $precision = 1);
             $table->timestamps();
-            $table->time('time', $precision = 1);
-            $table->foreignId('user_id')->constrained(('users'));
-            $table->foreignId('wod_id')->constrained('Wods');
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_times');
+        //
     }
 };

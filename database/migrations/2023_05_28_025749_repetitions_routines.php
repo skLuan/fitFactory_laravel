@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('routines', function (Blueprint $table) {
+        Schema::create('repetitions_routines', function (Blueprint $table) {
             $table->id();
-            $table->integer('reps');
-            $table->time('time', $precision = 1);
+            $table->foreignId('repetition_id')->constrained('repetitions');
+            $table->foreignId('routines_id')->constrained('routines');
             $table->timestamps();
         });
     }

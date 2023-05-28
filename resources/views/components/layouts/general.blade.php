@@ -14,7 +14,7 @@
 </head>
 
 <body class="bg-ffGreen-black flex w-screen h-screen">
-<main class="w-full h-full">
+<main {{ $attributes->merge(['class' => 'w-full h-full'])}}>
     {{$slot}}
 </main>
 </body>
