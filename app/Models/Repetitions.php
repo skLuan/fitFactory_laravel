@@ -11,6 +11,8 @@ class Repetitions extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['exercise_id'];
+
     public function exercises(): BelongsTo
     {
         return $this->belongsTo(Exercises::class);
@@ -18,6 +20,6 @@ class Repetitions extends Model
 
     public function routines(): BelongsToMany
     {
-        return $this->belongsToMany(Routines::class);
+        return $this->belongsToMany(Routines::class, 'repetitions_routines', 'repetitions_id', 'routines_id');
     }
 }

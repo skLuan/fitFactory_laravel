@@ -21,6 +21,9 @@ Route::get('/', function () {
 
 Route::get('/wod', [PagesController::class, 'wod'])->name('wod');
 
+Route::post('/newReps', [PagesController::class, 'newRoutine'])->name('newReps');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

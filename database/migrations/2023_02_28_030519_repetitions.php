@@ -15,7 +15,8 @@ return new class extends Migration
         Schema::create('repetitions', function (Blueprint $table) {
             $table->id();
             $table->integer('reps');
-            $table->foreignId('execise_id')->constrained('exercises');
+            $table->string('name');
+            $table->foreignId('exercise_id')->nullable()->default(null)->constrained('exercises');
             // $table->time('time', $precision = 1);
             $table->timestamps();
         });

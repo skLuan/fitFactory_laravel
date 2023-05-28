@@ -11,7 +11,7 @@ class input extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $nameId, public $typeInput = "text")
+    public function __construct(public $nameId, public $typeInput = "text", public $cClass = '')
     {
         //
 

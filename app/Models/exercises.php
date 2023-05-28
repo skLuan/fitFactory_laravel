@@ -15,4 +15,8 @@ class Exercises extends Model
     {
         return $this->hasMany(Repetitions::class);
     }
+    public function routines(): HasMany
+    {
+        return $this->hasMany(Routines::class);
+    }
 }

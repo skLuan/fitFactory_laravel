@@ -14,8 +14,8 @@ return new class extends Migration
         //
         Schema::create('repetitions_routines', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('repetition_id')->constrained('repetitions');
-            $table->foreignId('routines_id')->constrained('routines');
+            $table->foreignId('repetitions_id')->nullable()->constrained('repetitions');
+            $table->foreignId('routines_id')->nullable()->constrained('routines');
             $table->timestamps();
         });
     }
