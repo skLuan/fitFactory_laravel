@@ -15,6 +15,10 @@ class Routines extends Model
     {
         return $this->belongsToMany(Repetitions::class, 'repetitions_routines', 'routines_id', 'repetitions_id');
     }
+    public function wods(): BelongsToMany
+    {
+        return $this->belongsToMany(Wods::class, 'routines_wod', 'routine_id', 'wod_id');
+    }
 
 
     public function trainingType(): BelongsTo

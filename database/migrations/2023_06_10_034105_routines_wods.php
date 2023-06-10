@@ -12,6 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('routines_wod', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('wod_id', 50)->constrained('Wods');
+            $table->foreignId('routine_id', 50)->constrained('routines');
+            $table->timestamps();
+        });
+
     }
 
     /**

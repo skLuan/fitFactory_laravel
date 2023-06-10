@@ -15,16 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::controller(PagesController::class)->group(function(){
+    Route::get('/', 'home');
+    Route::get('/wod', 'wod')->name('wod');
+    Route::post('/newReps', 'newRoutine')->name('newReps');
+    Route::post('/createWod', 'createWod')->name('createWod');
 
-Route::get('/wod', [PagesController::class, 'wod'])->name('wod');
+}
+);
 
-Route::post('/newReps', [PagesController::class, 'newRoutine'])->name('newReps');
 
 
-Route::get('/dashboard', function () {
+
+Route::get('members/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 

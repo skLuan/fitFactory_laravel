@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('routines', function (Blueprint $table) {
             $table->id();
             $table->foreignId('training_type_id')->nullable()->constrained('training_types');
+            $table->integer('routine_reps');
             $table->timestamps();
         });
     }
