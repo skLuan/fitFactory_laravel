@@ -27,6 +27,8 @@ Route::controller(PagesController::class)->group(function(){
 
 
 
+
+
 Route::get('members/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

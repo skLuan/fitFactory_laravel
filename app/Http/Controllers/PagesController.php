@@ -59,8 +59,10 @@ class PagesController extends Controller
         $newRoutine->routine_reps = $routineRep;
         $newRoutine->save();
         $this->newReps($request, $newRoutine);
-        return redirect()->back()->send(['message' => 'success!']);
+        $wodName = $request->WodName;
+        return redirect()->back()->with('message','success!')->with('wodName', $wodName);
     }
+
     public function createWod(Request $request)
     {
         $idsroutines = json_decode($request->hiddenRoutines);

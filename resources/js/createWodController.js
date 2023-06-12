@@ -1,7 +1,7 @@
+let buttons = document.querySelectorAll('button[name="btn-type"]');
 function setActiveButton(e, button) {
     e.preventDefault();
 
-    let buttons = document.querySelectorAll('button[name="btn-type"]');
     buttons.forEach((btn) => {
         if (
             !btn.classList.contains("bg-ffGreen") &&
@@ -18,6 +18,7 @@ function setActiveButton(e, button) {
 }
 
 function settingWodName() {
+
     const inputWodName = document.querySelector("#WodName");
     const renderWodName = document.querySelector("#renderWodName");
     const realWodName = document.querySelector("#realWodName");
@@ -25,7 +26,13 @@ function settingWodName() {
     inputWodName.addEventListener("input", () => {
         renderWodName.textContent = inputWodName.value;
         realWodName.value = inputWodName.value;
-        if(renderWodName.textContent == '') renderWodName.textContent = 'Nombre del wod';
+        if (renderWodName.textContent == "")
+            renderWodName.textContent = "Nombre del wod";
     });
 }
+
+buttons.forEach((btn) => {
+    btn.addEventListener("click", (e) => setActiveButton(e, btn));
+});
+
 settingWodName();

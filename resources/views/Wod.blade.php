@@ -1,11 +1,16 @@
-<x-layouts.general class="grid grid-cols-12 px-5 auto-rows-max gap-x-5">
+<x-layouts.general class="flex flex-col lg:px-5 lg:grid lg:grid-cols-12 auto-rows-max gap-x-5">
     @push('head')
         @vite(['resources/js/createWodController.js'])
     @endpush
+    @php
+    if(session('message') == 'success'){
+    $valueWodName = session('wodName');
+    } else $valueWodName = ''
+    @endphp
     {{-- <x-application-logo></x-application-logo> --}}
 
     <x-navigation.topbar class="h-16 bg-gray-900 col-span-full"></x-navigation.topbar>
-    <x-navigation.sidebar class="col-span-2"></x-navigation.sidebar>
+    <x-navigation.sidebar class="hidden col-span-2 lg:block"></x-navigation.sidebar>
     <nav id="semana_Controller" class="col-span-9 col-start-4 my-6">
         <ul id="" class="flex flex-row text-white">
             <li>Lunes</li>
@@ -19,38 +24,21 @@
     <section id="calentamiento" class="col-span-9 col-start-4">
         <h3 class="text-5xl text-ffGray opacity-70 font-square">Calentamiento</h3>
     </section>
-    <section id="wodCore" class="col-span-5 col-start-4 pt-10">
-        <x-input cClass="flex flex-col w-1/2" nameId="WodName" placeholder="Linda">
-            <h3 class="pt-6 mr-4 text-3xl text-ffGray opacity-70 font-square">Work Of Day:</h3>
-        </x-input>
+    <section id="wodCore" class="col-span-5 col-start-4 px-5 pt-10 lg:px-0">
         <form id="formWodCreator" action="{{ route('newReps') }}" method="post">
             @csrf
             @method('POST')
-
-            <div class="flex flex-row my-6 text-ffGreen">
+            <x-input cClass="flex flex-col lg:w-1/2" nameId="WodName" value="{{$valueWodName}}" placeholder="Linda">
+                <h3 class="pt-6 mr-4 text-3xl text-ffGray opacity-70 font-square">Work Of Day:</h3>
+            </x-input>
+            <div class="flex flex-row flex-wrap justify-center my-6 text-ffGreen">
                 @foreach ($trainingTypes as $type)
-                    <button name="btn-type" onclick="setActiveButton(event,this)" value="{{ $type->id }}"
+                    <button name="btn-type" value="{{ $type->id }}"
                         id="type-{{ $type->name }}"
-                        class="border border-ffGreen mx-2 py-1 px-3 @if ($type->id === 3) bg-ffGreen text-ffGreen-black @endif">{{ $type->name }}</button>
+                        class="border border-ffGreen m-2 py-1 px-3 @if ($type->id === 3) bg-ffGreen text-ffGreen-black @endif">{{ $type->name }}</button>
                 @endforeach
                 <input name="trainingType" type="hidden" value="3" id="typeEntreno">
             </div>
-            <script>
-                function setActiveButton(e, button) {
-                    e.preventDefault();
-
-                    buttons = document.querySelectorAll('button[name="btn-type"]');
-                    buttons.forEach(btn => {
-                        if (!btn.classList.contains('bg-ffGreen') && !btn.classList.contains('text-ffGreen-black')) return;
-
-                        btn.classList.remove('bg-ffGreen', 'text-ffGreen-black');
-                    });
-                    // buttons.classlist.add('bg-ffGreen', 'text-ffGreen-black');
-                    button.classList.add('bg-ffGreen', 'text-ffGreen-black');
-                    var requestField = document.querySelector(`#typeEntreno`);
-                    requestField.value = button.value;
-                }
-            </script>
             <x-input cClass="flex flex-row items-center" class="w-1/6" nameId="RoutineReps" typeInput="number">
                 <h3 class="mr-4 text-3xl text-ffGray opacity-70 font-square">Duracion</h3>
             </x-input>
@@ -60,7 +48,7 @@
             </div>
         </form>
     </section>
-    <section id="WodISGOing" class="col-span-3 col-start-9">
+    <section id="WodISGOing" class="col-span-3 col-start-9 px-5 lg:px-0">
         @if (count($routines) > 0)
             <div class="w-full">
                 <h3 id="renderWodName" class="py-2 text-2xl font-bold text-ffWhite">Nombre Wod</h3>
